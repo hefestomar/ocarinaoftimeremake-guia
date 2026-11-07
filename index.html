@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#101512" />
+<title>Ocarina of Time Remake — Bitácora de aventura</title>
+<meta name="description" content="Guía paso a paso del remake de Ocarina of Time para Switch 2: avance marcable, secretos, coleccionables y mapa interactivo." />
+
+<!-- Vista previa al compartir (WhatsApp, Telegram, X, Facebook) -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Bitácora de aventura" />
+<meta property="og:locale" content="es_MX" />
+<meta property="og:url" content="https://hefestomar.github.io/ocarinaoftime-guia/" />
+<meta property="og:title" content="Ocarina of Time Remake — Bitácora de aventura" />
+<meta property="og:description" content="Guía paso a paso con avance marcable, secretos del juego y mapa interactivo. Switch 2, 2026." />
+<meta property="og:image" content="https://hefestomar.github.io/ocarinaoftime-guia/portada.jpg?v=1" />
+<meta property="og:image:secure_url" content="https://hefestomar.github.io/ocarinaoftime-guia/portada.jpg?v=1" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Ocarina of Time — Bitácora de aventura" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ocarina of Time Remake — Bitácora de aventura" />
+<meta name="twitter:description" content="Guía paso a paso con avance marcable, secretos del juego y mapa interactivo. Switch 2, 2026." />
+<meta name="twitter:image" content="https://hefestomar.github.io/ocarinaoftime-guia/portada.jpg?v=1" />
+
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="manifest" href='data:application/manifest+json,{"name":"Ocarina of Time — Bitácora","short_name":"OoT","start_url":".","display":"standalone","background_color":"%23101512","theme_color":"%23101512"}' />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23101512'/%3E%3Cpath d='M16 5l10 18H6z' fill='none' stroke='%23d9a441' stroke-width='2.4'/%3E%3C/svg%3E" />
+
+<style>
+  :root{
+    --stone-900:#101512;
+    --stone-800:#161c18;
+    --stone-700:#1c2320;
+    --stone-600:#26302b;
+    --line:#313d36;
+    --parchment:#e9e4d6;
+    --muted:#98a49b;
+    --amber:#d9a441;
+    --amber-soft:#f0c775;
+    --moss:#77b06b;
+    --ember:#c05a3c;
+    --radius:10px;
+    --tap:44px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:radial-gradient(1200px 520px at 50% -200px,#1c2620 0%,transparent 70%),var(--stone-900);
+    color:var(--parchment);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+    font-size:16px;line-height:1.55;
+    padding:0 0 100px;
+    padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 14px}
+  .serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+
+  /* ---------- Portada ---------- */
+  .masthead{position:relative;padding:34px 0 22px;text-align:center;overflow:hidden}
+  .masthead h1{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-weight:600;font-size:1.75rem;line-height:1.15;margin:0 0 8px;color:var(--amber-soft);
+    letter-spacing:.04em;
+  }
+  .masthead h1 span{display:block;font-size:.8rem;letter-spacing:.3em;color:var(--muted);margin-bottom:10px;font-weight:400}
+  .masthead .tagline{margin:0;color:var(--muted);font-size:.88rem}
+  .glyph{
+    width:66px;height:60px;margin:0 auto 14px;display:block;overflow:visible;
+  }
+  .glyph polygon{fill:none;stroke:var(--amber);stroke-width:3;stroke-linejoin:round}
+  .glyph .inner{stroke:var(--moss);stroke-width:2.5}
+  .glyph .halo{stroke:var(--amber);opacity:.35;stroke-width:2}
+  @keyframes breathe{0%,100%{opacity:.25;transform:scale(1)}50%{opacity:.7;transform:scale(1.14)}}
+  @keyframes rise{0%{opacity:0;transform:translateY(8px)}18%{opacity:.75}100%{opacity:0;transform:translateY(-46px)}}
+  .glyph .halo{transform-origin:center;animation:breathe 4.5s ease-in-out infinite}
+  .notes{position:absolute;inset:0;pointer-events:none}
+  .notes b{position:absolute;top:70px;font-size:.95rem;color:var(--amber);opacity:0;animation:rise 7s linear infinite}
+  .notes b:nth-child(1){left:22%;animation-delay:0s}
+  .notes b:nth-child(2){left:50%;animation-delay:2.4s}
+  .notes b:nth-child(3){left:76%;animation-delay:4.8s}
+
+  /* ---------- Panel de progreso ---------- */
+  .tracker{
+    position:sticky;top:0;z-index:60;margin:0 -14px 18px;
+    padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top));
+    background:rgba(16,21,18,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:14px;
+  }
+  .ring{flex:0 0 auto;width:58px;height:58px;position:relative}
+  .ring svg{transform:rotate(-90deg)}
+  .ring .bg{stroke:var(--stone-600)}
+  .ring .fg{stroke:url(#grad);stroke-linecap:round;transition:stroke-dashoffset .6s cubic-bezier(.4,0,.2,1)}
+  .ring span{
+    position:absolute;inset:0;display:grid;place-items:center;
+    font-size:.86rem;font-weight:700;color:var(--amber);font-variant-numeric:tabular-nums;
+  }
+  .tracker .grow{flex:1;min-width:0}
+  .tracker .labels{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
+  .tracker .labels b{font-size:.92rem;font-weight:600}
+  .tracker .labels small{color:var(--muted);font-size:.78rem;font-variant-numeric:tabular-nums}
+  .rail{height:9px;background:var(--stone-600);border-radius:99px;overflow:hidden;border:1px solid var(--line);position:relative}
+  .rail i{
+    display:block;height:100%;width:0;border-radius:99px;position:relative;overflow:hidden;
+    background:linear-gradient(90deg,var(--amber),var(--moss));
+    transition:width .5s cubic-bezier(.4,0,.2,1);
+  }
+  .rail i::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(100deg,transparent 20%,rgba(255,255,255,.45) 50%,transparent 80%);
+    transform:translateX(-100%);animation:sweep 3.2s ease-in-out infinite;
+  }
+  @keyframes sweep{0%{transform:translateX(-100%)}60%,100%{transform:translateX(220%)}}
+
+  /* ---------- Paneles de info ---------- */
+  .panel{background:var(--stone-800);border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin-bottom:12px}
+  .panel h2{font-family:"Iowan Old Style",Georgia,serif;font-size:1.05rem;margin:0 0 4px}
+  .panel p{margin:0 0 10px;color:var(--muted);font-size:.87rem}
+  .panel ul{margin:10px 0 0;padding-left:18px;font-size:.92rem}
+  .panel li{margin-bottom:7px}
+  .panel li b{color:var(--amber-soft);font-weight:600}
+  .map-link{
+    display:flex;align-items:center;gap:12px;min-height:52px;padding:0 14px;border-radius:9px;
+    background:linear-gradient(100deg,rgba(217,164,65,.16),rgba(119,176,107,.1));
+    border:1px solid rgba(217,164,65,.45);color:var(--amber-soft);text-decoration:none;font-weight:600;
+  }
+  .map-link svg{flex:0 0 auto}
+  .map-link em{display:block;font-style:normal;font-weight:400;font-size:.78rem;color:var(--muted)}
+  .map-link:active{background:rgba(217,164,65,.22)}
+  @keyframes ping{0%{transform:scale(.6);opacity:.9}70%,100%{transform:scale(2.1);opacity:0}}
+  .map-link .pin{transform-origin:center;animation:ping 2.6s ease-out infinite}
+
+  /* ---------- Controles ---------- */
+  .controls{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 20px}
+  .search{flex:1 1 100%}
+  .search input{
+    width:100%;min-height:var(--tap);background:var(--stone-700);border:1px solid var(--line);
+    color:var(--parchment);border-radius:var(--radius);padding:10px 14px;font-size:1rem;font-family:inherit;
+  }
+  .search input::placeholder{color:#6f7d74}
+  .chip{
+    min-height:var(--tap);display:inline-flex;align-items:center;padding:0 14px;border-radius:99px;cursor:pointer;
+    background:var(--stone-700);border:1px solid var(--line);color:var(--muted);font-size:.86rem;font-family:inherit;
+    transition:background .18s ease,color .18s ease,border-color .18s ease;
+  }
+  .chip[aria-pressed="true"]{background:rgba(217,164,65,.14);border-color:var(--amber);color:var(--amber-soft)}
+  .chip:focus-visible,input:focus-visible,button:focus-visible,summary:focus-visible,textarea:focus-visible,a:focus-visible{
+    outline:2px solid var(--amber);outline-offset:2px
+  }
+
+  /* ---------- Etapas ---------- */
+  .stage{margin:30px 0 8px}
+  .stage-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+  .stage h2{font-family:"Iowan Old Style",Georgia,serif;font-size:1.18rem;font-weight:600;margin:0;letter-spacing:.02em}
+  .stage-meta em{font-style:normal;color:var(--muted);font-size:.8rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .stage-meta em b{color:var(--amber);font-weight:700}
+
+  /* ---------- Tarjetas ---------- */
+  .quest{
+    background:var(--stone-800);border:1px solid var(--line);border-left:3px solid var(--stone-600);
+    border-radius:var(--radius);margin:12px 0;overflow:hidden;position:relative;
+    transition:border-color .25s ease,background .25s ease;
+  }
+  .quest.done{border-left-color:var(--moss);background:var(--stone-700)}
+  .quest.active{border-left-color:var(--amber)}
+  @keyframes cardflash{0%{box-shadow:inset 0 0 0 0 rgba(119,176,107,0)}25%{box-shadow:inset 0 0 40px 0 rgba(119,176,107,.3)}100%{box-shadow:inset 0 0 0 0 rgba(119,176,107,0)}}
+  .quest.celebrate{animation:cardflash 1.1s ease-out}
+
+  .quest-head{display:flex;gap:12px;padding:14px;align-items:flex-start}
+  .num{
+    flex:0 0 auto;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
+    font-size:.85rem;font-weight:600;background:var(--stone-600);color:var(--muted);
+    border:1px solid var(--line);font-variant-numeric:tabular-nums;transition:all .25s ease;
+  }
+  .quest.done .num{background:rgba(119,176,107,.16);color:var(--moss);border-color:rgba(119,176,107,.4)}
+  .quest-head h3{margin:0;font-size:1.02rem;line-height:1.35;font-weight:600}
+  .quest-head p{margin:3px 0 0;color:var(--muted);font-size:.87rem}
+  .quest-head .grow{min-width:0;flex:1}
+  .mini{margin-top:9px;height:4px;background:var(--stone-600);border-radius:99px;overflow:hidden;position:relative}
+  .mini i{display:block;height:100%;width:0;background:var(--moss);border-radius:99px;transition:width .45s cubic-bezier(.4,0,.2,1)}
+  .mini span{
+    position:absolute;right:0;top:-18px;font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums
+  }
+
+  .steps{list-style:none;margin:0;padding:0 14px 4px}
+  .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(49,61,54,.6)}
+  .step label{flex:1;cursor:pointer;font-size:.94rem;line-height:1.5;transition:color .25s ease}
+  .step.checked label{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(152,164,155,.5)}
+  .step.spotlight{background:rgba(217,164,65,.12);border-radius:8px;padding-left:8px;padding-right:8px;margin:0 -8px}
+  .step .hint{display:block;margin-top:3px;font-size:.83rem;color:var(--amber-soft);opacity:.85}
+  .step.checked .hint{text-decoration:none;opacity:.5;color:var(--muted)}
+  .badge{
+    display:inline-block;margin-right:7px;padding:1px 7px;border-radius:99px;font-size:.68rem;font-weight:700;
+    letter-spacing:.04em;background:rgba(217,164,65,.18);color:var(--amber-soft);border:1px solid rgba(217,164,65,.4);
+    vertical-align:1px;
+  }
+  .veil label{filter:blur(4.5px);opacity:.6;transition:filter .2s ease,opacity .2s ease}
+  .veil.shown label{filter:none;opacity:1}
+
+  input[type=checkbox]{
+    appearance:none;-webkit-appearance:none;flex:0 0 auto;width:22px;height:22px;margin:1px 0 0;
+    border:2px solid var(--muted);border-radius:6px;background:transparent;cursor:pointer;
+    display:grid;place-items:center;transition:background .2s ease,border-color .2s ease;
+  }
+  input[type=checkbox]:checked{background:var(--moss);border-color:var(--moss);animation:pop .3s ease}
+  @keyframes pop{0%{transform:scale(1)}45%{transform:scale(1.28)}100%{transform:scale(1)}}
+  input[type=checkbox]:checked::after{content:"";width:6px;height:11px;border:solid var(--stone-900);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+  .step input[type=checkbox]{width:26px;height:26px}
+
+  .spark{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--amber);pointer-events:none;animation:fly .9s ease-out forwards}
+  @keyframes fly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.2);opacity:0}}
+
+  .quest-foot{padding:6px 14px 14px}
+  .quest-foot summary{min-height:38px;display:flex;align-items:center;color:var(--muted);font-size:.85rem;cursor:pointer;list-style:none}
+  .quest-foot summary::-webkit-details-marker{display:none}
+  .quest-foot summary::before{content:"✎";margin-right:8px;color:var(--amber);opacity:.8}
+  textarea{
+    width:100%;background:var(--stone-900);border:1px solid var(--line);color:var(--parchment);
+    border-radius:8px;padding:10px;font:inherit;font-size:.92rem;resize:vertical;min-height:72px;
+  }
+
+  /* ---------- Contadores ---------- */
+  .counters{display:grid;gap:10px;margin-top:12px}
+  .counter{display:flex;align-items:center;gap:12px;background:var(--stone-900);border:1px solid var(--line);border-radius:var(--radius);padding:10px 12px}
+  .counter .grow{flex:1;min-width:0}
+  .counter b{display:block;font-size:.95rem;font-weight:600}
+  .counter small{color:var(--muted);font-size:.8rem;font-variant-numeric:tabular-nums}
+  .counter .mini{margin-top:6px}
+  .counter .mini i{background:var(--amber)}
+  .step-btn{width:38px;height:38px;border-radius:9px;border:1px solid var(--line);background:var(--stone-600);color:var(--parchment);font-size:1.2rem;line-height:1;cursor:pointer}
+  .step-btn:active{transform:scale(.92)}
+
+  .btn-row{display:flex;flex-wrap:wrap;gap:8px}
+  .btn{min-height:var(--tap);padding:0 16px;border-radius:9px;cursor:pointer;font:inherit;font-size:.9rem;background:var(--stone-600);border:1px solid var(--line);color:var(--parchment)}
+  .btn.danger{background:transparent;border-color:rgba(192,90,60,.55);color:var(--ember)}
+
+  .jump{
+    position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:70;
+    min-height:48px;padding:0 18px;border-radius:99px;cursor:pointer;font:inherit;font-size:.9rem;font-weight:600;
+    background:var(--amber);color:#1a1408;border:none;box-shadow:0 6px 20px rgba(0,0,0,.5);
+  }
+  .jump:active{transform:translateY(1px)}
+
+  .toast{
+    position:fixed;left:50%;bottom:calc(80px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(14px);
+    background:var(--stone-700);border:1px solid var(--moss);color:var(--parchment);
+    padding:10px 16px;border-radius:99px;font-size:.88rem;z-index:80;opacity:0;pointer-events:none;
+    max-width:78vw;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    transition:opacity .25s ease,transform .25s ease;
+  }
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .empty{color:var(--muted);text-align:center;padding:34px 10px;font-size:.92rem}
+  .note{color:var(--muted);font-size:.78rem;text-align:center;margin:26px 0 0;line-height:1.6}
+  .note a{color:var(--muted)}
+  .hidden{display:none !important}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::after,*::before{animation:none !important;transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="notes" aria-hidden="true"><b>♪</b><b>♫</b><b>♪</b></div>
+    <svg class="glyph" viewBox="0 0 66 60" aria-hidden="true">
+      <polygon class="halo" points="33,4 62,56 4,56" />
+      <polygon points="33,8 58,54 8,54" />
+      <polygon class="inner" points="33,28 45,50 21,50" />
+    </svg>
+    <h1><span>THE LEGEND OF ZELDA</span>Ocarina of Time</h1>
+    <p class="tagline">Remake para Nintendo Switch 2 · bitácora paso a paso</p>
+  </header>
+
+  <div class="tracker">
+    <div class="ring">
+      <svg width="58" height="58" viewBox="0 0 58 58">
+        <defs><linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#d9a441"/><stop offset="100%" stop-color="#77b06b"/>
+        </linearGradient></defs>
+        <circle class="bg" cx="29" cy="29" r="24" fill="none" stroke-width="5"/>
+        <circle class="fg" id="ring" cx="29" cy="29" r="24" fill="none" stroke-width="5"
+                stroke-dasharray="150.8" stroke-dashoffset="150.8"/>
+      </svg>
+      <span id="pct">0%</span>
+    </div>
+    <div class="grow">
+      <div class="labels"><b>Historia principal</b><small id="tally">0 de 0 pasos</small></div>
+      <div class="rail"><i id="rail"></i></div>
+      <div class="labels" style="margin:6px 0 0"><small id="stagelabel">Etapa 1 · Link niño</small><small id="stagepct">0%</small></div>
+    </div>
+  </div>
+
+  <section class="panel">
+    <h2>Mapa interactivo</h2>
+    <p>Todos los corazones, Skulltulas doradas y Big Poes del remake, ubicados y filtrables.</p>
+    <a class="map-link" href="https://zeldamaps.com/?game=OoTR&amp;map=65000&amp;subMap=650000&amp;zoom=1.9715618173499478&amp;x=80&amp;y=-141" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle class="pin" cx="12" cy="10" r="3"/>
+        <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/>
+      </svg>
+      <span>Abrir zeldamaps<em>Marca lo que ya recogiste; el mapa guarda tu avance aparte.</em></span>
+    </a>
+    <ul>
+      <li>Usa el buscador del mapa para ir directo a un objeto; el selector de arriba cambia entre superficie, mazmorras y pueblos.</li>
+      <li>El filtro por categoría deja ver solo Skulltulas o solo corazones, que es como conviene barrer una zona.</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Qué cambia en el remake</h2>
+    <p>Lo mismo de siempre, con otra piel y bastantes comodidades.</p>
+    <ul>
+      <li><b>Cámara libre, botón de salto y esprint.</b> Ya no saltas solo al llegar a la orilla, y la cámara gira 360°, así que varios puzles se leen distinto que en N64.</li>
+      <li><b>Apuntado sobre el hombro.</b> Gancho, arco y bumerán apuntan en tercera persona con giroscopio; la retícula pasa de azul a rojo cuando el disparo va a acertar.</li>
+      <li><b>Puntos de gancho señalados.</b> Muchos engarces están marcados a la vista, en vez de escondidos en ramas y vigas.</li>
+      <li><b>Gafas de la Verdad</b> (Lens of Truth): mismo objeto, nuevo nombre y diseño. Siguen gastando magia.</li>
+      <li><b>Broche resonante:</b> objeto nuevo que suena y brilla cuando hay una Skulltula dorada cerca.</li>
+      <li><b>Cinco botellas</b> en vez de cuatro, y las Botas de hierro van en un botón, sin entrar al menú.</li>
+      <li><b>Ocarina por micrófono:</b> puedes tararear la melodía o tocarla con una ocarina real; los botones siguen funcionando igual.</li>
+      <li><b>El tiempo corre sin pausas,</b> también dentro de los pueblos, y los NPC cambian entre día y noche en vivo.</li>
+      <li><b>Hilos del Tiempo:</b> la cronología dentro del juego te recuerda en qué ibas. Útil si juegas en ratos cortos.</li>
+      <li><b>Voces en español latino,</b> diálogos ampliados y banda sonora orquestal. Link sigue sin hablar.</li>
+      <li><b>Sin Master Quest:</b> el trazado de las mazmorras es el del original.</li>
+    </ul>
+  </section>
+
+  <div class="controls">
+    <div class="search"><input id="q" type="search" placeholder="Buscar objeto, jefe o lugar…" autocomplete="off" /></div>
+    <button class="chip" id="f-pending" aria-pressed="false">Solo pendientes</button>
+    <button class="chip" id="f-veil" aria-pressed="false">Cubrir pistas</button>
+    <button class="chip" id="f-remake" aria-pressed="false">Solo novedades</button>
+  </div>
+
+  <main id="guide"></main>
+
+  <section class="panel" style="margin-top:34px">
+    <h2>Coleccionables</h2>
+    <p>La cuenta de lo que llevas juntando por Hyrule.</p>
+    <div class="counters" id="counters"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Tu avance</h2>
+    <p id="storage-note">Se guarda en este navegador. Descarga un respaldo si cambias de teléfono o limpias datos.</p>
+    <div class="btn-row">
+      <button class="btn" id="export">Descargar respaldo</button>
+      <button class="btn" id="import-btn">Restaurar respaldo</button>
+      <button class="btn" id="share">Compartir guía</button>
+      <button class="btn danger" id="reset">Borrar todo</button>
+    </div>
+    <input type="file" id="import-file" accept="application/json,.json" class="hidden" />
+  </section>
+
+  <p class="note">Guía de referencia para jugar a tu ritmo. Las pistas se abren solo cuando tú quieres.<br />Nombres en español del juego, con el término en inglés entre paréntesis.</p>
+</div>
+
+<button class="jump" id="jump">Siguiente paso</button>
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+/* ============================================================
+   CONTENIDO
+   Sintaxis de cada paso:  "!texto || pista"
+   "!" al inicio  → marca el paso como novedad del remake
+   "||"           → separa el texto de la pista secundaria
+   ============================================================ */
+const GUIDE = [
+  {
+    stage: "Etapa 1 · Link niño",
+    quests: [
+      {
+        id: "kokiri_forest",
+        title: "Bosque Kokiri y el Gran Árbol Deku",
+        summary: "Espada, escudo, resortera y la Esmeralda Kokiri.",
+        steps: [
+          "Habla con Saria y cruza al área de entrenamiento, al fondo derecho del pueblo.",
+          "Gatea por el hueco, esquiva la roca rodante y abre el cofre: Espada Kokiri.",
+          "Junta 40 rupias cortando el pasto y revisando las plataformas del agua.",
+          "Compra el Escudo Deku en la tienda por 40 rupias.",
+          "Equipa espada y escudo desde el menú para que Mido te deje pasar. || Sin los dos equipados no se mueve.",
+          "!Ya puedes saltar con botón y correr: la plataforma del interior del árbol se cruza distinto que en N64.",
+          "Sube por las enredaderas y elimina a la Skulltula que cuelga sobre el cofre del Tirachinas de las Hadas (Slingshot).",
+          "Desde el piso más alto déjate caer al centro para romper la telaraña del suelo.",
+          "En el sótano enciende un Palo deku en la antorcha y quema la telaraña de la pared. || Se consume rápido: corre.",
+          "Vence a los tres Deku Scrubs en el orden que dice el último (2 · 3 · 1).",
+          "Jefe Gohma: tirachinas al ojo cuando brille rojo y remata con salto + espada. || Si trepa al techo, dispárale antes de que suelte huevos.",
+          "Recibes la Esmeralda Kokiri. Al salir, Saria te regala la Ocarina de las Hadas en el puente."
+        ]
+      },
+      {
+        id: "hyrule_castle",
+        title: "Llanura de Hyrule, Ciudadela y Zelda",
+        summary: "Infiltración, Carta de Zelda y la Nana de Zelda.",
+        steps: [
+          "Cruza la Llanura de Hyrule de día: de noche salen Stalchildren.",
+          "!El ciclo día/noche ya no se detiene dentro de los pueblos, así que los NPC cambian de sitio mientras caminas.",
+          "En la entrada del mercado, habla con Malon: te da el Huevo raro. || Empolla al amanecer y se vuelve un cuco.",
+          "Usa el cuco para despertar a Talon, dormido frente al castillo.",
+          "Empuja la caja de leche hasta el hueco del muro y trepa por la enredadera.",
+          "Patio de guardias: avanza entre arbustos siguiendo sus rutas; si te ven, vuelves al inicio.",
+          "Habla con Zelda, mira por la ventana y recibe la Carta de Zelda.",
+          "Afuera, Impa te enseña la Nana de Zelda (Zelda's Lullaby).",
+          "En el Bosque Perdido sigue siempre el camino por donde la música suena más fuerte hasta la Pradera Sagrada: Saria te enseña su canción. || La necesitas con los Goron."
+        ]
+      },
+      {
+        id: "kakariko_death_mountain",
+        title: "Kakariko, Montaña de la Muerte y Caverna Dodongo",
+        summary: "Brazalete Goron, bombas y el Rubí Goron.",
+        steps: [
+          "Muestra la Carta de Zelda al guardia del sendero a la montaña.",
+          "!Pasa antes por la Casa de las Skulltulas de Kakariko: con 10 símbolos dan la bolsa de rupias de adulto y con 20 el Broche resonante.",
+          "Sube esquivando las rocas que caen hasta Ciudad Goron.",
+          "Baja al nivel más profundo y toca la Nana de Zelda frente a la puerta de Darunia.",
+          "Toca la Canción de Saria para que baile de buen humor: te da el Brazalete Goron.",
+          "Desde el saliente sobre la entrada de la caverna, levanta una flor bomba y vuela la roca que bloquea el paso.",
+          "Ala este: vence a los dos Lizalfos para abrir la puerta y abre el cofre de la bolsa de bombas.",
+          "Vuela los pilares del salón principal con flores bomba para bajar la escalera.",
+          "Coloca una bomba en cada ojo del cráneo gigante para abrir la boca. || Es la entrada al jefe.",
+          "Jefe King Dodongo: bomba a la boca cuando inhale, golpéalo aturdido y pégate a la orilla cuando ruede.",
+          "Recibes el Rubí Goron y Darunia te nombra hermano jurado."
+        ]
+      },
+      {
+        id: "zora_domain",
+        title: "Región de los Zora y la Tripa de Jabu-Jabu",
+        summary: "Escama de plata, Bumerán y el Zafiro Zora.",
+        steps: [
+          "Sube por las plataformas del Río Zora hasta la cascada.",
+          "Toca la Nana de Zelda frente a la cascada para abrir la entrada.",
+          "Gana el minijuego de buceo: Escama de plata (Silver Scale).",
+          "En el Lago Hylia, bucea al fondo y recoge la botella con la Carta de Ruto.",
+          "Muéstrale la carta al Rey Zora para que despeje el camino a la Fuente Zora.",
+          "Atrapa un pez con una botella vacía y suéltalo frente a Lord Jabu-Jabu.",
+          "Adentro: carga a Ruto hasta las plataformas altas y consigue el Bumerán.",
+          "Big Octo: corre a su alrededor y golpéalo por la espalda con el Bumerán.",
+          "Jefe Barinade: corta con el Bumerán los tentáculos del techo, deshaz el anillo de Biris y ataca el núcleo con la espada.",
+          "Ruto te entrega el Zafiro Zora."
+        ]
+      },
+      {
+        id: "temple_of_time_child",
+        title: "Templo del Tiempo y la Espada Maestra",
+        summary: "Ocarina del Tiempo y salto de siete años.",
+        steps: [
+          "Ve a la Ciudadela: Zelda huye a caballo y lanza la Ocarina del Tiempo al foso.",
+          "Recoge la Ocarina del Tiempo y aprende la Canción del tiempo.",
+          "Cierra pendientes de niño antes de avanzar: corazones, botellas, máscaras y Skulltulas. || Varios lugares cambian para siempre al sacar la espada.",
+          "!Revisa Hilos del Tiempo si no recuerdas qué dejaste abierto: la cronología del juego lo lista.",
+          "En el Templo del Tiempo, coloca las tres Piedras Espirituales en el altar y toca la Canción del tiempo.",
+          "Extrae la Espada Maestra: despiertas siete años después."
+        ]
+      }
+    ]
+  },
+  {
+    stage: "Etapa 2 · Link adulto",
+    quests: [
+      {
+        id: "hookshot_forest_temple",
+        title: "Gancho y Templo del Bosque",
+        summary: "Carrera contra Dampé, Arco de las Hadas y Medallón del Bosque.",
+        steps: [
+          "Al salir del templo, Sheik te enseña el Preludio de la luz.",
+          "En el cementerio de Kakariko, jala la lápida con flores y baja a la tumba de Dampé.",
+          "Gánale la carrera sin cortar las curvas: Gancho (Hookshot).",
+          "!Los puntos de enganche están marcados a la vista; si la retícula se pone roja, el tiro entra.",
+          "Vuelve a la Pradera Sagrada por el Bosque Perdido: Sheik te enseña el Minueto del bosque.",
+          "Templo del Bosque: derrota a las cuatro Hermanas Poe para reactivar el elevador central.",
+          "Consigue el Arco de las Hadas y úsalo en los interruptores con forma de ojo.",
+          "Gira el pasillo torcido con el bloque antes de seguir.",
+          "Jefe Phantom Ganon: dispara al jinete que sale del cuadro correcto (el que se ve más lejano y nítido). || Segunda fase: devuelve sus esferas con la espada hasta aturdirlo.",
+          "Saria despierta como Sabia del Bosque: Medallón del Bosque."
+        ]
+      },
+      {
+        id: "fire_temple",
+        title: "Cráter de la Muerte y Templo del Fuego",
+        summary: "Túnica Goron, Martillo Megatón y Medallón del Fuego.",
+        steps: [
+          "En Ciudad Goron, detén con una bomba al Goron que rueda: te da la Túnica Goron. || Sin ella el cráter te quema.",
+          "Sheik te enseña el Bolero del fuego en el Cráter de la Muerte.",
+          "Dentro del templo, libera a los Gorones prisioneros conforme avanzas.",
+          "Vence al Flare Dancer y abre el cofre del Martillo Megatón.",
+          "Golpea con el martillo los bloques oxidados y las placas del suelo para abrir camino.",
+          "Jefe Volvagia: martillazo en cuanto asome la cabeza y remata con la espada; cuando vuele, corre y esquiva las rocas.",
+          "Darunia despierta como Sabio del Fuego: Medallón del Fuego."
+        ]
+      },
+      {
+        id: "ice_cavern_water_temple",
+        title: "Caverna de Hielo y Templo del Agua",
+        summary: "Botas de hierro, Túnica Zora, Dark Link y Supergancho.",
+        steps: [
+          "La Región de los Zora está congelada: rompe el hielo rojo de la entrada a la Caverna de Hielo con Fuego azul embotellado.",
+          "Caverna de Hielo: consigue las Botas de hierro y llena una botella con Fuego azul; Sheik te enseña la Serenata del agua.",
+          "Descongela al Rey Zora con el Fuego azul: te da la Túnica Zora.",
+          "!Las Botas de hierro se activan con su propio botón, sin pausar: ponértelas y quitártelas dentro del agua ya no interrumpe el ritmo.",
+          "En el Lago Hylia, baja con las botas hasta la entrada del Templo del Agua.",
+          "Cambia los tres niveles de agua tocando la Nana de Zelda en los símbolos de la Trifuerza. || Apunta qué puertas quedan abiertas en cada nivel.",
+          "Dark Link: imita tus movimientos; el Martillo Megatón o el Fuego de Din lo resuelven rápido.",
+          "Detrás de esa sala está el Supergancho (Longshot): abre el resto del templo.",
+          "Jefe Morpha: engancha el núcleo con el Supergancho, jálalo fuera del agua y golpéalo con la espada.",
+          "Ruto despierta como Sabia del Agua: Medallón del Agua. El lago vuelve a llenarse."
+        ]
+      },
+      {
+        id: "shadow_temple",
+        title: "Fondo del pozo y Templo de las Sombras",
+        summary: "Gafas de la Verdad, Botas voladoras y Medallón de la Sombra.",
+        steps: [
+          "De adulto, aprende la Canción de la tormenta con el hombre del molino de Kakariko.",
+          "Vuelve a ser niño y tócala dentro del molino: el pozo del pueblo se vacía.",
+          "!Fondo del pozo (de niño): aquí están las Gafas de la Verdad (Lens of Truth), el objeto que antes era la Lupa.",
+          "Dead Hand: deja que las manos te atrapen y ataca la cabeza cuando se acerque a morderte.",
+          "De adulto, Sheik te enseña el Nocturno de sombra en el cementerio.",
+          "En la entrada del templo, enciende las antorchas al mismo tiempo con el Fuego de Din. || Se compra con la Gran Hada de la Ciudadela.",
+          "Trae magia de sobra o una botella con poción verde: las Gafas consumen magia todo el rato.",
+          "Consigue las Botas voladoras para cruzar el abismo del barco.",
+          "Jefe Bongo Bongo: con las Gafas y las Botas voladoras puestas, flecha a cada mano y espada al ojo.",
+          "Impa despierta como Sabia de la Sombra: Medallón de la Sombra."
+        ]
+      },
+      {
+        id: "spirit_temple",
+        title: "Fortaleza Gerudo y Templo del Espíritu",
+        summary: "Guantes de plata, Escudo espejo y Medallón del Espíritu.",
+        steps: [
+          "Cruza el barranco del Valle Gerudo con el Supergancho al poste del otro lado.",
+          "Rescata a los cuatro carpinteros para obtener la Tarjeta de miembro Gerudo.",
+          "Desierto Encantado: sigue las banderas y luego al Guía espectral, que solo aparece con las Gafas de la Verdad.",
+          "En el Coloso del desierto, Sheik te enseña el Réquiem del espíritu. || Con esa canción puedes volver de niño.",
+          "De niño: entra por el hueco pequeño, vence al Nudillo de Hierro y abre el cofre de los Guantes de plata.",
+          "Toca el Réquiem del espíritu y regresa como adulto.",
+          "Con los Guantes de plata mueve el bloque gigante y avanza por la mitad derecha.",
+          "Vence al segundo Nudillo de Hierro y toma el Escudo espejo.",
+          "Refleja la luz del sol con el escudo para abrir los sellos del camino al jefe.",
+          "Jefe Birova (Twinrova): absorbe tres rayos del mismo elemento con el Escudo espejo y devuélveselos a la bruja contraria.",
+          "Nabooru despierta como Sabia del Espíritu: Medallón del Espíritu."
+        ]
+      },
+      {
+        id: "ganon_castle",
+        title: "Castillo de Ganon y batalla final",
+        summary: "Flechas de luz, seis pruebas y el duelo definitivo.",
+        steps: [
+          "Con los seis medallones, vuelve al Templo del Tiempo: Zelda se revela y te entrega las Flechas de luz.",
+          "Ganondorf la secuestra y los sabios levantan el puente al castillo.",
+          "Supera las seis pruebas elementales; en la Prueba de Luz usa las Flechas de luz sobre el cristal.",
+          "Prueba del Espíritu: vence al Nudillo de Hierro para conseguir los Guantes de oro. || Con ellos levantas la columna negra de la entrada.",
+          "Rompe la roca del corredor con los Guantes de oro para llegar a la Gran Hada: defensa doble.",
+          "Sube la torre y toma la Llave del jefe antes de la última puerta.",
+          "Ganondorf: devuelve sus esferas con la espada, flecha de luz y ataca; si flota, bájalo con el Supergancho.",
+          "Escapa de la torre con Zelda antes de que se agote el tiempo.",
+          "Ganon: rueda entre sus piernas y golpea la cola con el Martillo Megatón; cuando Zelda lo inmovilice, remata."
+        ]
+      }
+    ]
+  },
+  {
+    stage: "Secretos y 100 %",
+    optional: true,
+    quests: [
+      {
+        id: "sec_skulltulas",
+        title: "Skulltulas doradas (100)",
+        summary: "El coleccionable largo, ahora con ayuda.",
+        steps: [
+          "!Broche resonante: se consigue en la Casa de las Skulltulas de Kakariko. Equípalo y avisa con luz y sonido cuando hay una cerca; más fuerte mientras te acercas.",
+          "Premios de la casa: bolsa de rupias de adulto con 10 símbolos, Broche resonante con 20, bolsa gigante con 30, Bombuchus con 40, pieza de corazón con 50 y una rupia enorme al llegar a 100.",
+          "Muchas están en troncos, paredes con enredadera y techos: la cámara libre del remake deja verlas sin pelearte con el ángulo.",
+          "De noche salen las de las paredes; de día, las de los arbustos y las piedras. No intentes barrer una zona en un solo horario."
+        ]
+      },
+      {
+        id: "sec_corazones",
+        title: "Piezas y contenedores de corazón",
+        summary: "36 piezas, cuatro por contenedor.",
+        steps: [
+          "Minijuegos que dan pieza: pesca, tiro con arco a caballo, bolos de Bombuchus, caballito del rancho, carrera de Dampé y el juego de los cofres del mercado.",
+          "Barre las grutas tapadas con piedras y los agujeros del campo: varias esconden piezas o rupias moradas.",
+          "El Gran Hada de cada zona da mejora, no corazón: no las confundas al contar.",
+          "Usa el mapa interactivo filtrado por corazones cuando te falten las últimas: es más rápido que recorrer a ciegas."
+        ]
+      },
+      {
+        id: "sec_mascaras",
+        title: "Máscaras y la Máscara de la verdad",
+        summary: "Cadena de ventas del niño del mercado.",
+        steps: [
+          "Pide máscaras en la tienda del mercado y véndelas una por una para desbloquear la siguiente.",
+          "Al completar la cadena te quedas con la Máscara de la verdad: deja hablar con las Piedras Chismosas (Gossip Stones).",
+          "Con la máscara puesta, súbete a la plataforma del corro de dekus escondido en el Bosque Perdido para la bolsa de nueces grande.",
+          "Las Piedras Chismosas sueltan pistas de secretos cercanos: es la forma barata de no abrir el mapa a cada rato."
+        ]
+      },
+      {
+        id: "sec_botellas",
+        title: "Botellas (5 en el remake)",
+        summary: "El objeto más útil del juego.",
+        steps: [
+          "!El inventario del remake tiene cinco huecos de botella, uno más que el original.",
+          "Carta de Ruto: en el fondo del Lago Hylia, de niño.",
+          "Minijuego de cucos de Talon en el rancho, de adulto.",
+          "Coleccionista de Poes del mercado: véndele Big Poes cazados a caballo con el arco.",
+          "Guarda siempre una con hada: te revive al caer y te ahorra repetir media mazmorra."
+        ]
+      },
+      {
+        id: "sec_extras",
+        title: "Desvíos que valen la pena",
+        summary: "Epona, Espada de Biggoron y hechizos.",
+        steps: [
+          "Epona: aprende su canción con Malon de niño y gánale dos carreras a Ingo de adulto para salir saltando la barda.",
+          "Espada de Biggoron: cadena larga de intercambios con tramos contrarreloj. Hazla con Epona y las canciones de teletransporte a la mano.",
+          "Grandes Hadas: Fuego de Din (Ciudadela), Viento de Farore (Fuente Zora), Amor de Nayru (Coloso), magia doble y defensa doble.",
+          "Canción del espantapájaros: invéntate una melodía con Bonooru de niño y repítela de adulto para engancharte en sitios sin punto fijo.",
+          "!Zelda Notes, en la app del móvil, trae mapa, misiones de rumores, estudio fotográfico y el modo para tocar la ocarina: son extras, no hacen falta para terminar."
+        ]
+      }
+    ]
+  }
+];
+
+const COUNTERS = [
+  { id: "skulls",  label: "Skulltulas doradas", max: 100 },
+  { id: "hearts",  label: "Piezas de corazón",  max: 36 },
+  { id: "bottles", label: "Botellas",           max: 5 },
+  { id: "songs",   label: "Canciones de ocarina", max: 12 },
+  { id: "masks",   label: "Máscaras",           max: 8 }
+];
+
+/* ============================================================
+   ALMACENAMIENTO
+   ============================================================ */
+const KEY = "oot_bitacora_v3";
+const OLD_KEYS = ["oot_bitacora_v2", "oot_guide_progress_v1"];
+
+const Store = (() => {
+  let usable = true, mem = {};
+  try { localStorage.setItem("__t", "1"); localStorage.removeItem("__t"); } catch (e) { usable = false; }
+  return {
+    usable,
+    get(k) { try { return usable ? localStorage.getItem(k) : (mem[k] ?? null); } catch (e) { return mem[k] ?? null; } },
+    set(k, v) { try { usable ? localStorage.setItem(k, v) : (mem[k] = v); } catch (e) { mem[k] = v; } },
+    del(k) { try { usable ? localStorage.removeItem(k) : delete mem[k]; } catch (e) {} }
+  };
+})();
+
+const blank = () => ({ v: 3, checked: {}, notes: {}, counters: {}, ui: {} });
+let state = blank();
+
+function load() {
+  try {
+    const raw = Store.get(KEY);
+    if (raw) { state = Object.assign(blank(), JSON.parse(raw)); return; }
+  } catch (e) {}
+  migrate();
+}
+
+// Trae notas, contadores y las secciones que estaban 100% completas en versiones previas.
+function migrate() {
+  OLD_KEYS.forEach(k => {
+    let old;
+    try { old = JSON.parse(Store.get(k) || "null"); } catch (e) { return; }
+    if (!old) return;
+    Object.assign(state.counters, old.counters || {});
+    Object.assign(state.notes, old.notes || {});
+    eachQuest(q => {
+      const prev = old.checked || {};
+      const full = prev[q.id] === true ||
+        (Object.keys(prev).filter(x => x.startsWith(q.id + ":")).length >= 3 &&
+         Object.keys(prev).filter(x => x.startsWith(q.id + ":")).every(x => prev[x]));
+      if (full) q.steps.forEach((_, i) => { state.checked[q.id + ":" + i] = true; });
+    });
+  });
+  save();
+}
+
+let saveTimer = null;
+function save() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => Store.set(KEY, JSON.stringify(state)), 120);
+}
+
+/* ============================================================
+   UTILIDADES
+   ============================================================ */
+const reduceMotion = () => matchMedia("(prefers-reduced-motion:reduce)").matches;
+function eachQuest(fn) { GUIDE.forEach(s => s.quests.forEach(q => fn(q, s))); }
+const key = (qid, i) => qid + ":" + i;
+const isChecked = (qid, i) => !!state.checked[key(qid, i)];
+const questCount = q => q.steps.filter((_, i) => isChecked(q.id, i)).length;
+const questDone = q => questCount(q) === q.steps.length;
+function parseStep(raw) {
+  let t = raw, remake = false;
+  if (t.startsWith("!")) { remake = true; t = t.slice(1); }
+  const p = t.split("||");
+  return { main: p[0].trim(), hint: p[1] ? p[1].trim() : "", remake };
+}
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const findQuest = id => { let f = null; eachQuest(q => { if (q.id === id) f = q; }); return f; };
+const findStage = id => GUIDE.find(s => s.quests.some(q => q.id === id));
+
+function firstPending() {
+  for (const stage of GUIDE) {
+    if (stage.optional) continue;
+    for (const q of stage.quests)
+      for (let i = 0; i < q.steps.length; i++)
+        if (!isChecked(q.id, i)) return { qid: q.id, index: i, stage };
+  }
+  return null;
+}
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+const guideEl = document.getElementById("guide");
+
+function render() {
+  guideEl.innerHTML = "";
+  let n = 0;
+
+  GUIDE.forEach((stage, si) => {
+    const total = stage.quests.reduce((a, q) => a + q.steps.length, 0);
+    const done = stage.quests.reduce((a, q) => a + questCount(q), 0);
+    const sec = document.createElement("section");
+    sec.className = "stage";
+    sec.innerHTML = `<div class="stage-meta"><h2>${esc(stage.stage)}</h2>
+      <em data-stage="${si}"><b>${Math.round(done / total * 100)}%</b> · ${done}/${total}</em></div>`;
+    guideEl.appendChild(sec);
+
+    stage.quests.forEach(q => {
+      if (!stage.optional) n++;
+      const count = questCount(q);
+      const card = document.createElement("article");
+      card.className = "quest" + (count === q.steps.length ? " done" : "");
+      card.dataset.quest = q.id;
+      card.dataset.text = (q.title + " " + q.summary + " " + q.steps.join(" ")).toLowerCase();
+      card.dataset.remake = q.steps.some(s => s.startsWith("!")) ? "1" : "0";
+
+      const steps = q.steps.map((raw, i) => {
+        const s = parseStep(raw);
+        const on = isChecked(q.id, i);
+        return `<li class="step${on ? " checked" : ""}" data-step="${i}" data-remake="${s.remake ? 1 : 0}">
+          <input type="checkbox" id="s-${q.id}-${i}" data-quest="${q.id}" data-index="${i}"${on ? " checked" : ""} />
+          <label for="s-${q.id}-${i}">${s.remake ? '<span class="badge">Remake</span>' : ""}${esc(s.main)}${s.hint ? `<span class="hint">${esc(s.hint)}</span>` : ""}</label>
+        </li>`;
+      }).join("");
+
+      card.innerHTML = `
+        <div class="quest-head">
+          <div class="num">${stage.optional ? "✦" : n}</div>
+          <div class="grow">
+            <h3>${esc(q.title)}</h3>
+            <p>${esc(q.summary)}</p>
+            <div class="mini"><span>${Math.round(count / q.steps.length * 100)}%</span><i style="width:${count / q.steps.length * 100}%"></i></div>
+          </div>
+          <input type="checkbox" data-all="${q.id}"${count === q.steps.length ? " checked" : ""} title="Marcar toda la sección" />
+        </div>
+        <ul class="steps">${steps}</ul>
+        <div class="quest-foot">
+          <details${state.notes[q.id] ? " open" : ""}>
+            <summary>Notas de esta sección</summary>
+            <textarea data-note="${q.id}" rows="3" placeholder="Dónde te quedaste, qué te falta…">${esc(state.notes[q.id] || "")}</textarea>
+          </details>
+        </div>`;
+      guideEl.appendChild(card);
+    });
+  });
+
+  applyFilters();
+  updateTotals(true);
+}
+
+let shownPct = 0;
+function updateTotals(instant) {
+  let total = 0, done = 0;
+  GUIDE.forEach(s => { if (s.optional) return; s.quests.forEach(q => { total += q.steps.length; done += questCount(q); }); });
+  const pct = total ? Math.round(done / total * 100) : 0;
+
+  document.getElementById("tally").textContent = `${done} de ${total} pasos`;
+  document.getElementById("rail").style.width = pct + "%";
+  const C = 150.8;
+  document.getElementById("ring").style.strokeDashoffset = C - C * pct / 100;
+
+  const out = document.getElementById("pct");
+  if (instant || reduceMotion()) { out.textContent = pct + "%"; shownPct = pct; }
+  else countUp(out, shownPct, pct);
+
+  const next = firstPending();
+  document.getElementById("stagelabel").textContent = next ? next.stage.stage : "Aventura completa";
+  if (next) {
+    const t = next.stage.quests.reduce((a, q) => a + q.steps.length, 0);
+    const d = next.stage.quests.reduce((a, q) => a + questCount(q), 0);
+    document.getElementById("stagepct").textContent = Math.round(d / t * 100) + "%";
+  } else {
+    document.getElementById("stagepct").textContent = "100%";
+  }
+
+  document.querySelectorAll(".quest.active").forEach(el => el.classList.remove("active"));
+  if (next) {
+    const card = document.querySelector(`.quest[data-quest="${next.qid}"]`);
+    if (card && !card.classList.contains("done")) card.classList.add("active");
+  }
+}
+
+function countUp(el, from, to) {
+  const t0 = performance.now(), dur = 450;
+  (function frame(t) {
+    const k = Math.min(1, (t - t0) / dur);
+    const v = Math.round(from + (to - from) * (1 - Math.pow(1 - k, 3)));
+    el.textContent = v + "%";
+    if (k < 1) requestAnimationFrame(frame); else shownPct = to;
+  })(t0);
+}
+
+function refreshQuest(qid) {
+  const q = findQuest(qid);
+  const card = document.querySelector(`.quest[data-quest="${qid}"]`);
+  if (!q || !card) return;
+  const count = questCount(q);
+  const pct = Math.round(count / q.steps.length * 100);
+  card.querySelector(".mini i").style.width = pct + "%";
+  card.querySelector(".mini span").textContent = pct + "%";
+  const complete = count === q.steps.length;
+  const wasDone = card.classList.contains("done");
+  card.classList.toggle("done", complete);
+  card.querySelector(`input[data-all="${qid}"]`).checked = complete;
+  q.steps.forEach((_, i) => {
+    const li = card.querySelector(`.step[data-step="${i}"]`);
+    const box = li.querySelector("input");
+    box.checked = isChecked(qid, i);
+    li.classList.toggle("checked", box.checked);
+  });
+  if (complete && !wasDone) celebrate(card, q.title);
+
+  const stage = findStage(qid), si = GUIDE.indexOf(stage);
+  const em = guideEl.querySelector(`em[data-stage="${si}"]`);
+  if (em) {
+    const t = stage.quests.reduce((a, x) => a + x.steps.length, 0);
+    const d = stage.quests.reduce((a, x) => a + questCount(x), 0);
+    em.innerHTML = `<b>${Math.round(d / t * 100)}%</b> · ${d}/${t}`;
+  }
+}
+
+function celebrate(card, title) {
+  toast("✓ " + title);
+  if (reduceMotion()) return;
+  card.classList.remove("celebrate");
+  void card.offsetWidth;
+  card.classList.add("celebrate");
+  const r = card.getBoundingClientRect();
+  for (let i = 0; i < 10; i++) {
+    const s = document.createElement("i");
+    s.className = "spark";
+    s.style.left = (30 + Math.random() * (r.width - 60)) + "px";
+    s.style.top = (14 + Math.random() * 30) + "px";
+    s.style.setProperty("--dx", (Math.random() * 90 - 45) + "px");
+    s.style.setProperty("--dy", (-30 - Math.random() * 50) + "px");
+    s.style.background = Math.random() > .5 ? "var(--amber)" : "var(--moss)";
+    card.appendChild(s);
+    setTimeout(() => s.remove(), 950);
+  }
+}
+
+let toastTimer = null;
+function toast(msg) {
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("on");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove("on"), 2200);
+}
+
+/* ============================================================
+   INTERACCIÓN
+   ============================================================ */
+guideEl.addEventListener("change", e => {
+  const el = e.target;
+  if (el.dataset.index !== undefined) {
+    const { quest, index } = el.dataset;
+    if (el.checked) state.checked[key(quest, index)] = true; else delete state.checked[key(quest, index)];
+    save(); refreshQuest(quest); updateTotals(); applyFilters();
+  } else if (el.dataset.all) {
+    const q = findQuest(el.dataset.all);
+    q.steps.forEach((_, i) => {
+      if (el.checked) state.checked[key(q.id, i)] = true; else delete state.checked[key(q.id, i)];
+    });
+    save(); refreshQuest(q.id); updateTotals(); applyFilters();
+  }
+});
+
+guideEl.addEventListener("input", e => {
+  if (e.target.dataset.note !== undefined) {
+    const id = e.target.dataset.note, v = e.target.value;
+    if (v.trim()) state.notes[id] = v; else delete state.notes[id];
+    save();
+  }
+});
+
+guideEl.addEventListener("click", e => {
+  const li = e.target.closest(".step.veil");
+  if (li && !li.classList.contains("shown") && e.target.tagName !== "INPUT") {
+    e.preventDefault();
+    li.classList.add("shown");
+  }
+});
+
+const chips = {
+  pending: document.getElementById("f-pending"),
+  veil: document.getElementById("f-veil"),
+  remake: document.getElementById("f-remake")
+};
+const qInput = document.getElementById("q");
+
+Object.entries(chips).forEach(([name, btn]) => {
+  btn.setAttribute("aria-pressed", String(!!state.ui[name]));
+  btn.addEventListener("click", () => {
+    state.ui[name] = !state.ui[name];
+    btn.setAttribute("aria-pressed", String(state.ui[name]));
+    save(); applyFilters();
+  });
+});
+qInput.addEventListener("input", applyFilters);
+
+function applyFilters() {
+  const term = qInput.value.trim().toLowerCase();
+  const onlyPending = !!state.ui.pending, veil = !!state.ui.veil, onlyRemake = !!state.ui.remake;
+  let visible = 0;
+
+  document.querySelectorAll(".quest").forEach(card => {
+    const q = findQuest(card.dataset.quest);
+    const show = (!term || card.dataset.text.includes(term)) &&
+                 (!onlyPending || !questDone(q)) &&
+                 (!onlyRemake || card.dataset.remake === "1");
+    card.classList.toggle("hidden", !show);
+    if (show) visible++;
+
+    card.querySelectorAll(".step").forEach(li => {
+      const hide = (onlyPending && li.classList.contains("checked")) ||
+                   (onlyRemake && li.dataset.remake !== "1");
+      li.classList.toggle("hidden", hide);
+      li.classList.toggle("veil", veil && !li.classList.contains("checked"));
+      if (!veil) li.classList.remove("shown");
+    });
+  });
+
+  let empty = document.getElementById("empty");
+  if (!visible) {
+    if (!empty) {
+      empty = document.createElement("p");
+      empty.id = "empty"; empty.className = "empty";
+      guideEl.appendChild(empty);
+    }
+    empty.textContent = term ? `Nada coincide con “${term}”. Prueba con otro nombre.` : "No queda nada con esos filtros.";
+    empty.classList.remove("hidden");
+  } else if (empty) empty.classList.add("hidden");
+}
+
+document.getElementById("jump").addEventListener("click", () => {
+  const next = firstPending();
+  if (!next) { toast("Terminaste la historia principal."); return; }
+  qInput.value = "";
+  state.ui.remake = false; chips.remake.setAttribute("aria-pressed", "false");
+  applyFilters();
+  const li = document.querySelector(`.quest[data-quest="${next.qid}"] .step[data-step="${next.index}"]`);
+  if (li) {
+    li.classList.add("shown");
+    li.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "center" });
+    li.classList.add("spotlight");
+    setTimeout(() => li.classList.remove("spotlight"), 2400);
+  }
+});
+
+/* ---------- Contadores ---------- */
+const countersEl = document.getElementById("counters");
+function renderCounters() {
+  countersEl.innerHTML = COUNTERS.map(c => {
+    const v = state.counters[c.id] || 0;
+    return `<div class="counter" data-counter="${c.id}">
+      <button class="step-btn" data-delta="-1" aria-label="Restar ${esc(c.label)}">−</button>
+      <div class="grow">
+        <b>${esc(c.label)}</b>
+        <small><span class="val">${v}</span> de ${c.max}</small>
+        <div class="mini"><i style="width:${v / c.max * 100}%"></i></div>
+      </div>
+      <button class="step-btn" data-delta="1" aria-label="Sumar ${esc(c.label)}">+</button>
+    </div>`;
+  }).join("");
+}
+countersEl.addEventListener("click", e => {
+  const btn = e.target.closest("[data-delta]");
+  if (!btn) return;
+  const box = btn.closest("[data-counter]");
+  const cfg = COUNTERS.find(c => c.id === box.dataset.counter);
+  const next = Math.min(cfg.max, Math.max(0, (state.counters[cfg.id] || 0) + Number(btn.dataset.delta)));
+  state.counters[cfg.id] = next;
+  save();
+  box.querySelector(".val").textContent = next;
+  box.querySelector(".mini i").style.width = (next / cfg.max * 100) + "%";
+  if (next === cfg.max) toast(cfg.label + ": completo.");
+});
+
+/* ---------- Respaldo y compartir ---------- */
+document.getElementById("export").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "oot-bitacora-" + new Date().toISOString().slice(0, 10) + ".json";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+});
+
+const fileInput = document.getElementById("import-file");
+document.getElementById("import-btn").addEventListener("click", () => fileInput.click());
+fileInput.addEventListener("change", () => {
+  const f = fileInput.files[0];
+  if (!f) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const data = JSON.parse(reader.result);
+      if (!data || typeof data !== "object") throw new Error("bad");
+      state = Object.assign(blank(), data);
+      save(); render(); renderCounters();
+      toast("Respaldo restaurado.");
+    } catch (e) {
+      toast("Ese archivo no es un respaldo válido.");
+    }
+    fileInput.value = "";
+  };
+  reader.readAsText(f);
+});
+
+document.getElementById("share").addEventListener("click", async () => {
+  const data = { title: "Ocarina of Time — Bitácora", text: "Guía paso a paso del remake", url: location.href };
+  try {
+    if (navigator.share) await navigator.share(data);
+    else { await navigator.clipboard.writeText(location.href); toast("Enlace copiado."); }
+  } catch (e) {}
+});
+
+document.getElementById("reset").addEventListener("click", () => {
+  if (!confirm("Se borran los pasos marcados, las notas y los contadores. ¿Continuar?")) return;
+  Store.del(KEY); OLD_KEYS.forEach(Store.del);
+  state = blank();
+  qInput.value = "";
+  Object.values(chips).forEach(b => b.setAttribute("aria-pressed", "false"));
+  render(); renderCounters();
+  toast("Bitácora en blanco.");
+});
+
+/* ---------- Arranque ---------- */
+load();
+render();
+renderCounters();
+if (!Store.usable) {
+  document.getElementById("storage-note").textContent =
+    "Este navegador tiene bloqueado el almacenamiento local, así que el avance se pierde al cerrar. Ábrelo en Chrome sin modo incógnito.";
+}
+</script>
+</body>
+</html>
